@@ -1,4 +1,4 @@
-# CSRD Physical Climate Risk Analysis — Sample Project
+# CSRD Physical Climate Risk Analysis: Sample Project
 
 A end-to-end geospatial climate risk assessment built in Python, using dummy data
 so anyone can clone it and run it immediately.
