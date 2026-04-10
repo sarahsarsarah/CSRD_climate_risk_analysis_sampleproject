@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_bef0d28d17d60ef1b7e41fd27d9fd4b5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    <div style='position:fixed;bottom:28px;left:28px;z-index:1000;background:white;padding:12px 16px;border-radius:8px;border:1px solid #ddd;font-family:sans-serif;font-size:12px;'><b style='font-size:13px;'>Risk tier (SSP5-8.5)</b><br><span style='color:#E24B4A;'>&#9679;</span> Critical (&ge;7.5)<br><span style='color:#EF9F27;'>&#9679;</span> High (5.0–7.4)<br><span style='color:#639922;'>&#9679;</span> Medium (2.5–4.9)<br><span style='color:#1D9E75;'>&#9679;</span> Low (&lt;2.5)<br><span style='color:#1a6faf;'>&#9632;</span> Flood zone<br><span style='color:#c97a1a;'>&#9632;</span> Drought zone<br><span style='color:#888;font-size:11px;'>Circle size = asset value</span></div>
+    
+            <div class="folium-map" id="map_bef0d28d17d60ef1b7e41fd27d9fd4b5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_bef0d28d17d60ef1b7e41fd27d9fd4b5 = L.map(
+                "map_bef0d28d17d60ef1b7e41fd27d9fd4b5",
+                {
+                    center: [52.3, 5.2],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 8,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_9a7696e3a8bcb4ffbd096c1cdbf2c3b4 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_9a7696e3a8bcb4ffbd096c1cdbf2c3b4.addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        function geo_json_d6e38595bcf86839bf4234004908b9ad_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1a6faf", "fillColor": "#1a6faf", "fillOpacity": 0.12, "weight": 1};
+            }
+        }
+
+        function geo_json_d6e38595bcf86839bf4234004908b9ad_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_d6e38595bcf86839bf4234004908b9ad = L.geoJson(null, {
+                onEachFeature: geo_json_d6e38595bcf86839bf4234004908b9ad_onEachFeature,
+            
+                style: geo_json_d6e38595bcf86839bf4234004908b9ad_styler,
+            ...{
+}
+        });
+
+        function geo_json_d6e38595bcf86839bf4234004908b9ad_add (data) {
+            geo_json_d6e38595bcf86839bf4234004908b9ad
+                .addData(data);
+        }
+            geo_json_d6e38595bcf86839bf4234004908b9ad_add({"features": [{"geometry": {"coordinates": [[[5.113361161457805, 51.534657994986645], [5.110067931993824, 52.07395483087074], [3.9433937066647164, 52.065433911701575], [3.960553024866592, 51.52626864020094], [5.113361161457805, 51.534657994986645]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_d6e38595bcf86839bf4234004908b9ad.bindTooltip(
+                `<div>
+                     Rhine-Meuse delta (critical)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            geo_json_d6e38595bcf86839bf4234004908b9ad.addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        function geo_json_c3529cde1af6918e8d186a34c8659b21_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1a6faf", "fillColor": "#1a6faf", "fillOpacity": 0.12, "weight": 1};
+            }
+        }
+
+        function geo_json_c3529cde1af6918e8d186a34c8659b21_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_c3529cde1af6918e8d186a34c8659b21 = L.geoJson(null, {
+                onEachFeature: geo_json_c3529cde1af6918e8d186a34c8659b21_onEachFeature,
+            
+                style: geo_json_c3529cde1af6918e8d186a34c8659b21_styler,
+            ...{
+}
+        });
+
+        function geo_json_c3529cde1af6918e8d186a34c8659b21_add (data) {
+            geo_json_c3529cde1af6918e8d186a34c8659b21
+                .addData(data);
+        }
+            geo_json_c3529cde1af6918e8d186a34c8659b21_add({"features": [{"geometry": {"coordinates": [[[5.255650757426365, 52.16858102052602], [5.2544469623544225, 52.573020205088696], [4.369468737224729, 52.568734147100926], [4.378705575043881, 52.164345140873905], [5.255650757426365, 52.16858102052602]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_c3529cde1af6918e8d186a34c8659b21.bindTooltip(
+                `<div>
+                     Holland coastal strip (high)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            geo_json_c3529cde1af6918e8d186a34c8659b21.addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        function geo_json_716092586adab1ea1bfba47fe4fdef3a_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1a6faf", "fillColor": "#1a6faf", "fillOpacity": 0.12, "weight": 1};
+            }
+        }
+
+        function geo_json_716092586adab1ea1bfba47fe4fdef3a_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_716092586adab1ea1bfba47fe4fdef3a = L.geoJson(null, {
+                onEachFeature: geo_json_716092586adab1ea1bfba47fe4fdef3a_onEachFeature,
+            
+                style: geo_json_716092586adab1ea1bfba47fe4fdef3a_styler,
+            ...{
+}
+        });
+
+        function geo_json_716092586adab1ea1bfba47fe4fdef3a_add (data) {
+            geo_json_716092586adab1ea1bfba47fe4fdef3a
+                .addData(data);
+        }
+            geo_json_716092586adab1ea1bfba47fe4fdef3a_add({"features": [{"geometry": {"coordinates": [[[5.532596760404212, 51.93037997673016], [5.533772565341423, 52.28989853640996], [4.800943553217709, 52.2885366488262], [4.805639773128382, 51.92903221611874], [5.532596760404212, 51.93037997673016]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_716092586adab1ea1bfba47fe4fdef3a.bindTooltip(
+                `<div>
+                     IJssel valley (medium)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            geo_json_716092586adab1ea1bfba47fe4fdef3a.addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        function geo_json_d8f230e1ae445ef971409e4d3fb7558e_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#1a6faf", "fillColor": "#1a6faf", "fillOpacity": 0.12, "weight": 1};
+            }
+        }
+
+        function geo_json_d8f230e1ae445ef971409e4d3fb7558e_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_d8f230e1ae445ef971409e4d3fb7558e = L.geoJson(null, {
+                onEachFeature: geo_json_d8f230e1ae445ef971409e4d3fb7558e_onEachFeature,
+            
+                style: geo_json_d8f230e1ae445ef971409e4d3fb7558e_styler,
+            ...{
+}
+        });
+
+        function geo_json_d8f230e1ae445ef971409e4d3fb7558e_add (data) {
+            geo_json_d8f230e1ae445ef971409e4d3fb7558e
+                .addData(data);
+        }
+            geo_json_d8f230e1ae445ef971409e4d3fb7558e_add({"features": [{"geometry": {"coordinates": [[[6.85996129666386, 52.50103823225834], [6.876655729742486, 52.99517595174577], [5.834107687840879, 53.00361903484334], [5.829095564486534, 52.50935994794981], [6.85996129666386, 52.50103823225834]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_d8f230e1ae445ef971409e4d3fb7558e.bindTooltip(
+                `<div>
+                     Groningen lowlands (medium)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            geo_json_d8f230e1ae445ef971409e4d3fb7558e.addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        function geo_json_1c489f7439a723a6f16573afe5bb1994_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#c97a1a", "fillColor": "#c97a1a", "fillOpacity": 0.12, "weight": 1};
+            }
+        }
+
+        function geo_json_1c489f7439a723a6f16573afe5bb1994_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_1c489f7439a723a6f16573afe5bb1994 = L.geoJson(null, {
+                onEachFeature: geo_json_1c489f7439a723a6f16573afe5bb1994_onEachFeature,
+            
+                style: geo_json_1c489f7439a723a6f16573afe5bb1994_styler,
+            ...{
+}
+        });
+
+        function geo_json_1c489f7439a723a6f16573afe5bb1994_add (data) {
+            geo_json_1c489f7439a723a6f16573afe5bb1994
+                .addData(data);
+        }
+            geo_json_1c489f7439a723a6f16573afe5bb1994_add({"features": [{"geometry": {"coordinates": [[[6.353027129015247, 51.20287705433485], [6.365512804300183, 51.78706952495359], [5.27849352206907, 51.79110094281029], [5.279878803683953, 51.20684140047403], [6.353027129015247, 51.20287705433485]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_1c489f7439a723a6f16573afe5bb1994.bindTooltip(
+                `<div>
+                     Southeast sandy soils (high)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            geo_json_1c489f7439a723a6f16573afe5bb1994.addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        function geo_json_ab65cb3cf7150768823ad52cfb1783f1_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#c97a1a", "fillColor": "#c97a1a", "fillOpacity": 0.12, "weight": 1};
+            }
+        }
+
+        function geo_json_ab65cb3cf7150768823ad52cfb1783f1_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_ab65cb3cf7150768823ad52cfb1783f1 = L.geoJson(null, {
+                onEachFeature: geo_json_ab65cb3cf7150768823ad52cfb1783f1_onEachFeature,
+            
+                style: geo_json_ab65cb3cf7150768823ad52cfb1783f1_styler,
+            ...{
+}
+        });
+
+        function geo_json_ab65cb3cf7150768823ad52cfb1783f1_add (data) {
+            geo_json_ab65cb3cf7150768823ad52cfb1783f1
+                .addData(data);
+        }
+            geo_json_ab65cb3cf7150768823ad52cfb1783f1_add({"features": [{"geometry": {"coordinates": [[[5.784411284437322, 51.633178143963164], [5.788398238320516, 52.082584856297025], [4.986008238781377, 52.082585978064394], [4.989991912538939, 51.63317925650477], [5.784411284437322, 51.633178143963164]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_ab65cb3cf7150768823ad52cfb1783f1.bindTooltip(
+                `<div>
+                     Veluwe ridge (medium)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            geo_json_ab65cb3cf7150768823ad52cfb1783f1.addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        function geo_json_815672117e37a4e737a399376bd40ef7_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#c97a1a", "fillColor": "#c97a1a", "fillOpacity": 0.12, "weight": 1};
+            }
+        }
+
+        function geo_json_815672117e37a4e737a399376bd40ef7_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_815672117e37a4e737a399376bd40ef7 = L.geoJson(null, {
+                onEachFeature: geo_json_815672117e37a4e737a399376bd40ef7_onEachFeature,
+            
+                style: geo_json_815672117e37a4e737a399376bd40ef7_styler,
+            ...{
+}
+        });
+
+        function geo_json_815672117e37a4e737a399376bd40ef7_add (data) {
+            geo_json_815672117e37a4e737a399376bd40ef7
+                .addData(data);
+        }
+            geo_json_815672117e37a4e737a399376bd40ef7_add({"features": [{"geometry": {"coordinates": [[[5.316000257825002, 50.98214933972021], [5.3152300105597465, 51.47653032382731], [4.451636674970587, 51.472804175038604], [4.461668872747714, 50.97847551641111], [5.316000257825002, 50.98214933972021]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_815672117e37a4e737a399376bd40ef7.bindTooltip(
+                `<div>
+                     Zeeland agricultural (medium)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            geo_json_815672117e37a4e737a399376bd40ef7.addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+            var circle_marker_4974a7343351054e2d686ee8c745d993 = L.circleMarker(
+                [51.921, 4.478],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.38888888888889, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_7099323cb259d1f4a4e0a4a222149aab = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_8a161cc32391b4f80b26beb77d82a4e9 = $(`<div id="html_8a161cc32391b4f80b26beb77d82a4e9" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Rotterdam Warehouse A</b><br><span style='color:#666;'>Logistics</span><br><br><b>Book value:</b> €12.5M<br><b>1km buffer flooded:</b> 99.8%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>10.0</td><td style='padding:4px 8px;text-align:center;'><b>10.0</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#E24B4A;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>CRITICAL RISK</span></div></div>`)[0];
+                popup_7099323cb259d1f4a4e0a4a222149aab.setContent(html_8a161cc32391b4f80b26beb77d82a4e9);
+            
+        
+
+        circle_marker_4974a7343351054e2d686ee8c745d993.bindPopup(popup_7099323cb259d1f4a4e0a4a222149aab)
+        ;
+
+        
+    
+    
+            circle_marker_4974a7343351054e2d686ee8c745d993.bindTooltip(
+                `<div>
+                     Rotterdam Warehouse A | Critical
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9498dcc925205b28cd1f656d9028fef8 = L.circleMarker(
+                [52.374, 4.898],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.0, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_8870c3f76d9b7e8d9094244818ce12a4 = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_29ce5292537cbf066aaefb1c35250b44 = $(`<div id="html_29ce5292537cbf066aaefb1c35250b44" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Amsterdam Office Tower</b><br><span style='color:#666;'>Office</span><br><br><b>Book value:</b> €45.0M<br><b>1km buffer flooded:</b> 99.8%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>8.2</td><td style='padding:4px 8px;text-align:center;'><b>9.9</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#E24B4A;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>CRITICAL RISK</span></div></div>`)[0];
+                popup_8870c3f76d9b7e8d9094244818ce12a4.setContent(html_29ce5292537cbf066aaefb1c35250b44);
+            
+        
+
+        circle_marker_9498dcc925205b28cd1f656d9028fef8.bindPopup(popup_8870c3f76d9b7e8d9094244818ce12a4)
+        ;
+
+        
+    
+    
+            circle_marker_9498dcc925205b28cd1f656d9028fef8.bindTooltip(
+                `<div>
+                     Amsterdam Office Tower | Critical
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9282e4d4e366bf37e52c5baa8038cafe = L.circleMarker(
+                [52.09, 5.121],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.11111111111111, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_7b50c37212284131fe1074197ec8ada6 = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_29a2d92b7af39661d930949677b0687a = $(`<div id="html_29a2d92b7af39661d930949677b0687a" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Utrecht Data Centre</b><br><span style='color:#666;'>Tech</span><br><br><b>Book value:</b> €28.0M<br><b>1km buffer flooded:</b> 99.8%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>5.4</td><td style='padding:4px 8px;text-align:center;'><b>6.5</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#EF9F27;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>HIGH RISK</span></div></div>`)[0];
+                popup_7b50c37212284131fe1074197ec8ada6.setContent(html_29a2d92b7af39661d930949677b0687a);
+            
+        
+
+        circle_marker_9282e4d4e366bf37e52c5baa8038cafe.bindPopup(popup_7b50c37212284131fe1074197ec8ada6)
+        ;
+
+        
+    
+    
+            circle_marker_9282e4d4e366bf37e52c5baa8038cafe.bindTooltip(
+                `<div>
+                     Utrecht Data Centre | High
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3c4a90752a352dcfa332d7755ef55d52 = L.circleMarker(
+                [51.814, 4.669],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.922222222222222, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_efa9febc2e6aa0d5ff0ef43f90402162 = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_12cdc0f8f318cbaf95c7f042bbedf1b8 = $(`<div id="html_12cdc0f8f318cbaf95c7f042bbedf1b8" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Dordrecht Logistics Hub</b><br><span style='color:#666;'>Logistics</span><br><br><b>Book value:</b> €8.3M<br><b>1km buffer flooded:</b> 99.8%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>10.0</td><td style='padding:4px 8px;text-align:center;'><b>10.0</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#E24B4A;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>CRITICAL RISK</span></div></div>`)[0];
+                popup_efa9febc2e6aa0d5ff0ef43f90402162.setContent(html_12cdc0f8f318cbaf95c7f042bbedf1b8);
+            
+        
+
+        circle_marker_3c4a90752a352dcfa332d7755ef55d52.bindPopup(popup_efa9febc2e6aa0d5ff0ef43f90402162)
+        ;
+
+        
+    
+    
+            circle_marker_3c4a90752a352dcfa332d7755ef55d52.bindTooltip(
+                `<div>
+                     Dordrecht Logistics Hub | Critical
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_69e900ceada7cccd6b7a7a14b64a6cd0 = L.circleMarker(
+                [51.5, 3.61],
+                {"bubblingMouseEvents": true, "color": "darkgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkgreen", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.677777777777777, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_60171fd35cbd9bc78566fbbf0be798b0 = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_30d5c065e88c16d5698992eee4a8af54 = $(`<div id="html_30d5c065e88c16d5698992eee4a8af54" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Middelburg Industrial Park</b><br><span style='color:#666;'>Industrial</span><br><br><b>Book value:</b> €6.1M<br><b>1km buffer flooded:</b> 0.0%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#1D9E75;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>LOW RISK</span></div></div>`)[0];
+                popup_60171fd35cbd9bc78566fbbf0be798b0.setContent(html_30d5c065e88c16d5698992eee4a8af54);
+            
+        
+
+        circle_marker_69e900ceada7cccd6b7a7a14b64a6cd0.bindPopup(popup_60171fd35cbd9bc78566fbbf0be798b0)
+        ;
+
+        
+    
+    
+            circle_marker_69e900ceada7cccd6b7a7a14b64a6cd0.bindTooltip(
+                `<div>
+                     Middelburg Industrial Park | Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8a9939babef58a08e7ec228cef2cf6cd = L.circleMarker(
+                [53.219, 6.566],
+                {"bubblingMouseEvents": true, "color": "darkgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkgreen", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.355555555555556, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_61c42f5c830ac3d4b7b466d9797b6a34 = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_2c570b10104b328552562876968feb50 = $(`<div id="html_2c570b10104b328552562876968feb50" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Groningen Farm Complex</b><br><span style='color:#666;'>Agriculture</span><br><br><b>Book value:</b> €3.2M<br><b>1km buffer flooded:</b> 0.0%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#1D9E75;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>LOW RISK</span></div></div>`)[0];
+                popup_61c42f5c830ac3d4b7b466d9797b6a34.setContent(html_2c570b10104b328552562876968feb50);
+            
+        
+
+        circle_marker_8a9939babef58a08e7ec228cef2cf6cd.bindPopup(popup_61c42f5c830ac3d4b7b466d9797b6a34)
+        ;
+
+        
+    
+    
+            circle_marker_8a9939babef58a08e7ec228cef2cf6cd.bindTooltip(
+                `<div>
+                     Groningen Farm Complex | Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_62233cf7d2ae38a086eb7bd8fccb87b9 = L.circleMarker(
+                [51.843, 5.853],
+                {"bubblingMouseEvents": true, "color": "darkgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkgreen", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.755555555555556, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_ac67ef26f360b38eba2f58737555c56c = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_6452530dfff8339cf20dcac1249e62d9 = $(`<div id="html_6452530dfff8339cf20dcac1249e62d9" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Nijmegen Factory</b><br><span style='color:#666;'>Manufacturing</span><br><br><b>Book value:</b> €15.8M<br><b>1km buffer flooded:</b> 0.0%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#1D9E75;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>LOW RISK</span></div></div>`)[0];
+                popup_ac67ef26f360b38eba2f58737555c56c.setContent(html_6452530dfff8339cf20dcac1249e62d9);
+            
+        
+
+        circle_marker_62233cf7d2ae38a086eb7bd8fccb87b9.bindPopup(popup_ac67ef26f360b38eba2f58737555c56c)
+        ;
+
+        
+    
+    
+            circle_marker_62233cf7d2ae38a086eb7bd8fccb87b9.bindTooltip(
+                `<div>
+                     Nijmegen Factory | Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3fe29405fec142fa177ecd9f4a1bea4a = L.circleMarker(
+                [50.851, 5.691],
+                {"bubblingMouseEvents": true, "color": "darkgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkgreen", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.444444444444445, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_3c32f7616a0c5248bd42d72b254129e1 = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_cb9255049a997e72b48e61bb93402657 = $(`<div id="html_cb9255049a997e72b48e61bb93402657" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Maastricht Office Block</b><br><span style='color:#666;'>Office</span><br><br><b>Book value:</b> €22.0M<br><b>1km buffer flooded:</b> 0.0%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#1D9E75;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>LOW RISK</span></div></div>`)[0];
+                popup_3c32f7616a0c5248bd42d72b254129e1.setContent(html_cb9255049a997e72b48e61bb93402657);
+            
+        
+
+        circle_marker_3fe29405fec142fa177ecd9f4a1bea4a.bindPopup(popup_3c32f7616a0c5248bd42d72b254129e1)
+        ;
+
+        
+    
+    
+            circle_marker_3fe29405fec142fa177ecd9f4a1bea4a.bindTooltip(
+                `<div>
+                     Maastricht Office Block | Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8ddcc098decf7aac96c4c1959f517ecd = L.circleMarker(
+                [52.37, 5.215],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.077777777777778, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_ee76af65e448ddb64e579e3b49733c92 = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_d4a8334afda5b3cc9dacad4a4e9cb0c2 = $(`<div id="html_d4a8334afda5b3cc9dacad4a4e9cb0c2" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Almere Distribution Centre</b><br><span style='color:#666;'>Logistics</span><br><br><b>Book value:</b> €9.7M<br><b>1km buffer flooded:</b> 99.8%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>8.2</td><td style='padding:4px 8px;text-align:center;'><b>9.9</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#E24B4A;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>CRITICAL RISK</span></div></div>`)[0];
+                popup_ee76af65e448ddb64e579e3b49733c92.setContent(html_d4a8334afda5b3cc9dacad4a4e9cb0c2);
+            
+        
+
+        circle_marker_8ddcc098decf7aac96c4c1959f517ecd.bindPopup(popup_ee76af65e448ddb64e579e3b49733c92)
+        ;
+
+        
+    
+    
+            circle_marker_8ddcc098decf7aac96c4c1959f517ecd.bindTooltip(
+                `<div>
+                     Almere Distribution Centre | Critical
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c408335e2f0ded8fb918ce2d8d31baca = L.circleMarker(
+                [52.07, 4.3],
+                {"bubblingMouseEvents": true, "color": "darkgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkgreen", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.277777777777779, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_91885cde7864e55db9093addda16ef92 = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_4f57d38335f6acbacf145a7295407473 = $(`<div id="html_4f57d38335f6acbacf145a7295407473" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>The Hague HQ</b><br><span style='color:#666;'>Office</span><br><br><b>Book value:</b> €38.5M<br><b>1km buffer flooded:</b> 44.7%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#1D9E75;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>LOW RISK</span></div></div>`)[0];
+                popup_91885cde7864e55db9093addda16ef92.setContent(html_4f57d38335f6acbacf145a7295407473);
+            
+        
+
+        circle_marker_c408335e2f0ded8fb918ce2d8d31baca.bindPopup(popup_91885cde7864e55db9093addda16ef92)
+        ;
+
+        
+    
+    
+            circle_marker_c408335e2f0ded8fb918ce2d8d31baca.bindTooltip(
+                `<div>
+                     The Hague HQ | Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5fecb9a117ef40a2828f69c0e176c53f = L.circleMarker(
+                [51.44, 5.478],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.444444444444445, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_fe3cc49f17a7b1ec0e8a3b785cb46572 = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_aa71b1fc3618ab24a579830f8a70f428 = $(`<div id="html_aa71b1fc3618ab24a579830f8a70f428" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Eindhoven Tech Campus</b><br><span style='color:#666;'>Tech</span><br><br><b>Book value:</b> €31.0M<br><b>1km buffer flooded:</b> 0.0%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>9.0</td><td style='padding:4px 8px;text-align:center;'><b>10.0</b></td></tr></table><br><span style='background:#E24B4A;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>CRITICAL RISK</span></div></div>`)[0];
+                popup_fe3cc49f17a7b1ec0e8a3b785cb46572.setContent(html_aa71b1fc3618ab24a579830f8a70f428);
+            
+        
+
+        circle_marker_5fecb9a117ef40a2828f69c0e176c53f.bindPopup(popup_fe3cc49f17a7b1ec0e8a3b785cb46572)
+        ;
+
+        
+    
+    
+            circle_marker_5fecb9a117ef40a2828f69c0e176c53f.bindTooltip(
+                `<div>
+                     Eindhoven Tech Campus | Critical
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b2143c7211d0ba5f334048f1d5b37df0 = L.circleMarker(
+                [52.388, 4.646],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.911111111111111, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_ad5979bda1a7ce749c1a5e519383f667 = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_6797e6ed9733617415b37757dcc3b449 = $(`<div id="html_6797e6ed9733617415b37757dcc3b449" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Haarlem Retail Park</b><br><span style='color:#666;'>Retail</span><br><br><b>Book value:</b> €17.2M<br><b>1km buffer flooded:</b> 99.8%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>8.2</td><td style='padding:4px 8px;text-align:center;'><b>9.9</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#E24B4A;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>CRITICAL RISK</span></div></div>`)[0];
+                popup_ad5979bda1a7ce749c1a5e519383f667.setContent(html_6797e6ed9733617415b37757dcc3b449);
+            
+        
+
+        circle_marker_b2143c7211d0ba5f334048f1d5b37df0.bindPopup(popup_ad5979bda1a7ce749c1a5e519383f667)
+        ;
+
+        
+    
+    
+            circle_marker_b2143c7211d0ba5f334048f1d5b37df0.bindTooltip(
+                `<div>
+                     Haarlem Retail Park | Critical
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7959db7e2e8fd37b1e3292edf1d73e55 = L.circleMarker(
+                [51.555, 5.091],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.266666666666666, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_5d435c5d701e8dc70667f65f6af7ced8 = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_cd6f7e07909581ace3439233e647a3da = $(`<div id="html_cd6f7e07909581ace3439233e647a3da" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Tilburg Manufacturing</b><br><span style='color:#666;'>Manufacturing</span><br><br><b>Book value:</b> €11.4M<br><b>1km buffer flooded:</b> 99.8%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>10.0</td><td style='padding:4px 8px;text-align:center;'><b>10.0</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#E24B4A;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>CRITICAL RISK</span></div></div>`)[0];
+                popup_5d435c5d701e8dc70667f65f6af7ced8.setContent(html_cd6f7e07909581ace3439233e647a3da);
+            
+        
+
+        circle_marker_7959db7e2e8fd37b1e3292edf1d73e55.bindPopup(popup_5d435c5d701e8dc70667f65f6af7ced8)
+        ;
+
+        
+    
+    
+            circle_marker_7959db7e2e8fd37b1e3292edf1d73e55.bindTooltip(
+                `<div>
+                     Tilburg Manufacturing | Critical
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f8da0a1e7bdd2b930e04150bd2087153 = L.circleMarker(
+                [51.984, 5.899],
+                {"bubblingMouseEvents": true, "color": "darkgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkgreen", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.622222222222222, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_6ff3d73cba90fe4663fb4ecc38d4d97d = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_f1e2f8ec18f0caf522b2d542d6e1f4d8 = $(`<div id="html_f1e2f8ec18f0caf522b2d542d6e1f4d8" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Arnhem Storage Facility</b><br><span style='color:#666;'>Logistics</span><br><br><b>Book value:</b> €5.6M<br><b>1km buffer flooded:</b> 0.0%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#1D9E75;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>LOW RISK</span></div></div>`)[0];
+                popup_6ff3d73cba90fe4663fb4ecc38d4d97d.setContent(html_f1e2f8ec18f0caf522b2d542d6e1f4d8);
+            
+        
+
+        circle_marker_f8da0a1e7bdd2b930e04150bd2087153.bindPopup(popup_6ff3d73cba90fe4663fb4ecc38d4d97d)
+        ;
+
+        
+    
+    
+            circle_marker_f8da0a1e7bdd2b930e04150bd2087153.bindTooltip(
+                `<div>
+                     Arnhem Storage Facility | Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_82d4264db3aeec529de68ad473ee9e26 = L.circleMarker(
+                [53.201, 5.8],
+                {"bubblingMouseEvents": true, "color": "darkgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkgreen", "fillOpacity": 0.78, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.311111111111112, "stroke": true, "weight": 3}
+            ).addTo(map_bef0d28d17d60ef1b7e41fd27d9fd4b5);
+        
+    
+        var popup_5bfaecd4acacddb32b182db867ff6149 = L.popup({
+  "maxWidth": 290,
+});
+
+        
+            
+                var html_dd7ea8e491f9f0b8159a91d89c037e42 = $(`<div id="html_dd7ea8e491f9f0b8159a91d89c037e42" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;min-width:220px;'><b style='font-size:14px;'>Leeuwarden Agri Site</b><br><span style='color:#666;'>Agriculture</span><br><br><b>Book value:</b> €2.8M<br><b>1km buffer flooded:</b> 0.0%<br><br><table style='border-collapse:collapse;width:100%;'><tr style='background:#f5f5f5;'><th style='padding:4px 8px;text-align:left;'>Hazard</th><th style='padding:4px 8px;'>SSP2-4.5</th><th style='padding:4px 8px;'>SSP5-8.5</th></tr><tr><td style='padding:4px 8px;'>Flood</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr><tr style='background:#f5f5f5;'><td style='padding:4px 8px;'>Drought</td><td style='padding:4px 8px;text-align:center;'>0.0</td><td style='padding:4px 8px;text-align:center;'><b>0.0</b></td></tr></table><br><span style='background:#1D9E75;color:white;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:bold;'>LOW RISK</span></div></div>`)[0];
+                popup_5bfaecd4acacddb32b182db867ff6149.setContent(html_dd7ea8e491f9f0b8159a91d89c037e42);
+            
+        
+
+        circle_marker_82d4264db3aeec529de68ad473ee9e26.bindPopup(popup_5bfaecd4acacddb32b182db867ff6149)
+        ;
+
+        
+    
+    
+            circle_marker_82d4264db3aeec529de68ad473ee9e26.bindTooltip(
+                `<div>
+                     Leeuwarden Agri Site | Low
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

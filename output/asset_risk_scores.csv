@@ -1,0 +1,16 @@
+asset_id,asset_name,sector,value_eur_m,flood_score,drought_score,flood_ssp245,flood_ssp585,drought_ssp245,drought_ssp585,composite_ssp245,composite_ssp585,pct_buffer_flooded,risk_tier,flood_zone,drought_zone
+NL001,Rotterdam Warehouse A,logistics,12.5,9.1,0.0,10.0,10.0,0.0,0.0,10.0,10.0,99.8,Critical,Rhine-Meuse delta (critical),
+NL002,Amsterdam Office Tower,office,45.0,6.8,0.0,8.2,9.9,0.0,0.0,8.2,9.9,99.8,Critical,Holland coastal strip (high),
+NL003,Utrecht Data Centre,tech,28.0,4.5,0.0,5.4,6.5,0.0,0.0,5.4,6.5,99.8,High,IJssel valley (medium),
+NL004,Dordrecht Logistics Hub,logistics,8.3,9.1,0.0,10.0,10.0,0.0,0.0,10.0,10.0,99.8,Critical,Rhine-Meuse delta (critical),
+NL005,Middelburg Industrial Park,industrial,6.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,Low,,
+NL006,Groningen Farm Complex,agriculture,3.2,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,Low,,
+NL007,Nijmegen Factory,manufacturing,15.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,Low,,
+NL008,Maastricht Office Block,office,22.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,Low,,
+NL009,Almere Distribution Centre,logistics,9.7,6.8,0.0,8.2,9.9,0.0,0.0,8.2,9.9,99.8,Critical,Holland coastal strip (high),
+NL010,The Hague HQ,office,38.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,44.7,Low,,
+NL011,Eindhoven Tech Campus,tech,31.0,0.0,7.2,0.0,0.0,9.0,10.0,9.0,10.0,0.0,Critical,,Southeast sandy soils (high)
+NL012,Haarlem Retail Park,retail,17.2,6.8,0.0,8.2,9.9,0.0,0.0,8.2,9.9,99.8,Critical,Holland coastal strip (high),
+NL013,Tilburg Manufacturing,manufacturing,11.4,9.1,0.0,10.0,10.0,0.0,0.0,10.0,10.0,99.8,Critical,Rhine-Meuse delta (critical),
+NL014,Arnhem Storage Facility,logistics,5.6,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,Low,,
+NL015,Leeuwarden Agri Site,agriculture,2.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,Low,,
